@@ -31,7 +31,7 @@ export default function ComingSoon() {
 
         <figure className="coming-soon__visual">
           <img
-            src="/assets/images/bus-highway.jpg"
+            src={`${import.meta.env.BASE_URL}assets/images/bus-highway.jpg`}
             alt="Dham Rejini VVIP Party Bus glowing neon magenta on the highway at dusk"
             className="coming-soon__bus"
             width={1600}
