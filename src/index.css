@@ -3897,278 +3897,1067 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   COMING SOON — Launch gate (first deploy)
+   DHAM REJINI — PREMIUM CINEMATIC COMING SOON HERO BANNER
    ========================================================================== */
-.coming-soon {
-  --cs-neon: #e11485;
-  --cs-neon-bright: #ff4ec8;
-  --cs-script: "Yellowtail", cursive;
+.cs-banner-viewport {
+  --neon-magenta: #E11485;
+  --neon-bright: #FF4EC8;
+  --neon-dark: #8C0C55;
+  --deep-black: #050106;
+  --midnight-purple: #0C020F;
 
   position: relative;
+  width: 100vw;
+  min-height: 100vh;
   min-height: 100svh;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  background-color: var(--deep-black);
   background:
-    radial-gradient(ellipse 90% 55% at 50% -10%, rgba(140, 12, 85, 0.55) 0%, transparent 58%),
-    radial-gradient(ellipse 80% 45% at 50% 110%, rgba(100, 8, 65, 0.5) 0%, transparent 55%),
-    linear-gradient(180deg, #140310 0%, #050106 42%, #0b0210 100%);
-  color: #fff;
-}
-
-.coming-soon__glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.coming-soon__glow--top {
-  top: -14%;
-  left: 50%;
-  width: min(72vw, 560px);
-  height: 300px;
-  transform: translateX(-50%);
-  background: rgba(225, 20, 133, 0.38);
-  animation: csGlowPulse 4.5s ease-in-out infinite;
-}
-
-.coming-soon__glow--bottom {
-  bottom: -10%;
-  left: 50%;
-  width: min(85vw, 680px);
-  height: 240px;
-  transform: translateX(-50%);
-  background: rgba(225, 20, 133, 0.3);
-  animation: csGlowPulse 5.5s ease-in-out infinite reverse;
-}
-
-.coming-soon__stage {
-  position: relative;
-  z-index: 1;
-  width: min(100%, 760px);
-  padding: clamp(1.35rem, 3.5vw, 2.4rem) clamp(1rem, 4vw, 1.75rem) clamp(1.5rem, 3.5vw, 2.25rem);
+    radial-gradient(ellipse 70% 55% at 75% 50%, rgba(225, 20, 133, 0.16) 0%, rgba(12, 2, 15, 0.5) 45%, var(--deep-black) 85%),
+    linear-gradient(180deg, #09010A 0%, var(--deep-black) 50%, #08010A 100%);
+  color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: clamp(0.85rem, 2.2vw, 1.25rem);
+  justify-content: space-between;
+  font-family: var(--font-body);
 }
 
-.coming-soon__brand {
+/* Atmospheric Ambient Lights */
+.cs-banner-ambient {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.cs-banner-ambient--bus {
+  top: 15%;
+  right: 8%;
+  width: min(60vw, 650px);
+  height: 520px;
+  background: radial-gradient(circle, rgba(225, 20, 133, 0.22) 0%, rgba(140, 12, 85, 0.1) 60%, transparent 80%);
+  animation: csAtmospherePulse 6s ease-in-out infinite alternate;
+}
+
+.cs-banner-ambient--glow {
+  bottom: -15%;
+  left: 10%;
+  width: min(50vw, 500px);
+  height: 380px;
+  background: radial-gradient(circle, rgba(140, 12, 85, 0.18) 0%, transparent 70%);
+}
+
+@keyframes csAtmospherePulse {
+  0% { transform: scale(0.96); opacity: 0.75; }
+  100% { transform: scale(1.05); opacity: 1; }
+}
+
+/* Top Subtle Status Bar */
+.cs-banner-topbar {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  padding: 24px 36px 12px;
+}
+
+.cs-banner-topbar-inner {
+  max-width: 1560px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  width: 100%;
-  max-width: 440px;
-  animation: csRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.coming-soon__brand-rule {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--cs-neon), transparent);
-  box-shadow: 0 0 10px rgba(225, 20, 133, 0.7);
+.cs-banner-brand-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(14, 2, 18, 0.85);
+  border: 1px solid rgba(225, 20, 133, 0.4);
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 18px rgba(225, 20, 133, 0.25);
 }
 
-.coming-soon__brand-block {
-  flex-shrink: 0;
+.cs-chip-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-magenta);
+  box-shadow: 0 0 8px var(--neon-magenta), 0 0 16px var(--neon-magenta);
+  animation: csDotPulse 2s ease-in-out infinite;
 }
 
-.coming-soon__logo {
-  margin: 0;
+@keyframes csDotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.cs-chip-text {
   font-family: var(--font-heading);
-  font-size: clamp(1.6rem, 5.8vw, 2.45rem);
-  font-weight: 800;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.cs-banner-reg-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: rgba(5, 1, 6, 0.7);
+  border: 1px solid rgba(225, 20, 133, 0.25);
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--neon-bright);
+}
+
+/* Wide Cinematic Hero Canvas */
+.cs-banner-hero {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 10px 36px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.cs-banner-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1.25fr;
+  gap: 56px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Left Column: Negative Space & Typography */
+.cs-banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 640px;
+  animation: csHeroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes csHeroFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Brand Lockup */
+.cs-banner-brand-lockup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cs-brand-eyebrow {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 900;
   letter-spacing: 0.08em;
   line-height: 1;
   text-transform: uppercase;
 }
 
-.coming-soon__logo-dham {
-  color: #fff;
+.cs-brand-dham {
+  color: #FFFFFF;
 }
 
-.coming-soon__logo-rejini {
-  color: var(--cs-neon-bright);
+.cs-brand-rejini {
+  color: var(--neon-bright);
   text-shadow:
-    0 0 8px rgba(255, 78, 200, 0.95),
-    0 0 22px rgba(225, 20, 133, 0.8),
-    0 0 42px rgba(225, 20, 133, 0.5);
+    0 0 12px rgba(255, 78, 200, 0.9),
+    0 0 26px rgba(225, 20, 133, 0.75),
+    0 0 45px rgba(225, 20, 133, 0.4);
 }
 
-.coming-soon__tagline {
-  margin: 0.35rem 0 0;
-  font-family: var(--font-heading);
-  font-size: clamp(0.68rem, 2vw, 0.8rem);
-  font-weight: 500;
-  letter-spacing: 0.42em;
-  color: rgba(255, 255, 255, 0.92);
-  text-indent: 0.42em;
-}
-
-.coming-soon__headline {
-  animation: csRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
-}
-
-.coming-soon__eyebrow {
+.cs-brand-sub {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 6vw, 2.55rem);
-  font-weight: 800;
-  font-style: italic;
-  letter-spacing: 0.02em;
-  color: #fff;
-  line-height: 1.05;
-}
-
-.coming-soon__coming {
-  margin: 0.05rem 0 0.5rem;
-  font-family: var(--cs-script);
-  font-size: clamp(3.1rem, 13.5vw, 5.5rem);
-  font-weight: 400;
-  line-height: 0.95;
-  color: var(--cs-neon-bright);
-  text-shadow:
-    0 0 6px rgba(255, 78, 200, 1),
-    0 0 18px rgba(225, 20, 133, 0.95),
-    0 0 40px rgba(225, 20, 133, 0.7),
-    0 0 70px rgba(225, 20, 133, 0.4);
-  animation: csNeonPulse 3.2s ease-in-out infinite;
-}
-
-.coming-soon__sub {
-  margin: 0 auto;
-  max-width: 28rem;
-  font-family: var(--font-body);
-  font-size: clamp(0.85rem, 2.4vw, 1rem);
-  font-weight: 400;
+  font-size: clamp(0.72rem, 1.4vw, 0.88rem);
+  font-weight: 600;
+  letter-spacing: 0.44em;
   color: rgba(255, 255, 255, 0.88);
-  line-height: 1.45;
+  text-transform: uppercase;
 }
 
-.coming-soon__visual {
-  position: relative;
-  width: 100vw;
-  max-width: none;
-  margin: 0.1rem calc(50% - 50vw);
-  overflow: hidden;
-  isolation: isolate;
-  animation: csRise 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+.cs-brand-rule {
+  width: 120px;
+  height: 2px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, var(--neon-magenta), transparent);
+  box-shadow: 0 0 10px rgba(225, 20, 133, 0.6);
 }
 
-.coming-soon__bus {
-  width: 100%;
-  height: clamp(240px, 48vw, 420px);
-  object-fit: cover;
-  object-position: center 42%;
-  filter: saturate(1.25) contrast(1.1) brightness(0.92);
-  transform: scale(1.05);
-  animation: csBusDrift 14s ease-in-out infinite alternate;
-}
-
-.coming-soon__visual-fade {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, #050106 0%, transparent 18%, transparent 70%, #050106 100%),
-    linear-gradient(90deg, rgba(5, 1, 6, 0.7) 0%, transparent 22%, transparent 78%, rgba(5, 1, 6, 0.7) 100%);
-  pointer-events: none;
-}
-
-.coming-soon__road-glow {
-  position: absolute;
-  left: 50%;
-  bottom: 8%;
-  width: min(70%, 520px);
-  height: 35%;
-  transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(225, 20, 133, 0.45) 0%, transparent 70%);
-  filter: blur(18px);
-  pointer-events: none;
-  animation: csGlowPulse 3.8s ease-in-out infinite;
-}
-
-.coming-soon__cta {
+/* Headlines */
+.cs-banner-headlines {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.1rem;
-  width: 100%;
-  margin-top: 0.35rem;
-  animation: csRise 1s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+  gap: 12px;
 }
 
-.coming-soon__contact {
+.cs-hero-eyebrow {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  line-height: 1.1;
+}
+
+.cs-hero-headline {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(3.4rem, 6.8vw, 5.6rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.cs-headline-accent {
+  color: var(--neon-bright);
+  text-shadow:
+    0 0 18px rgba(255, 78, 200, 0.95),
+    0 0 35px rgba(225, 20, 133, 0.85),
+    0 0 65px rgba(225, 20, 133, 0.5);
+  display: inline-block;
+  animation: csAccentGlow 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes csAccentGlow {
+  0% {
+    text-shadow: 0 0 14px rgba(255, 78, 200, 0.9), 0 0 30px rgba(225, 20, 133, 0.75);
+  }
+  100% {
+    text-shadow: 0 0 22px rgba(255, 78, 200, 1), 0 0 45px rgba(225, 20, 133, 0.95), 0 0 80px rgba(225, 20, 133, 0.5);
+  }
+}
+
+.cs-hero-sub {
+  margin: 8px 0 0;
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+  max-width: 480px;
+}
+
+/* Actions */
+.cs-banner-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.cs-banner-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.7rem;
-  min-width: min(100%, 290px);
-  padding: 0.95rem 2.15rem;
+  gap: 12px;
+  padding: 18px 42px;
   border-radius: 9999px;
-  border: 2px solid var(--cs-neon);
-  background: rgba(8, 1, 10, 0.88);
-  color: #fff;
+  background: rgba(14, 2, 18, 0.8);
+  border: 1.8px solid var(--neon-magenta);
+  color: #FFFFFF;
   font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-indent: 0.28em;
-  box-shadow:
-    0 0 12px rgba(225, 20, 133, 0.65),
-    0 0 28px rgba(225, 20, 133, 0.35),
-    inset 0 0 18px rgba(225, 20, 133, 0.12);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-  animation: csButtonGlow 2.8s ease-in-out infinite;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  text-transform: uppercase;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 24px rgba(225, 20, 133, 0.4), 0 10px 30px rgba(0, 0, 0, 0.8);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 
-.coming-soon__contact:hover {
-  transform: translateY(-2px) scale(1.02);
-  border-color: var(--cs-neon-bright);
-  background: rgba(225, 20, 133, 0.18);
-  box-shadow:
-    0 0 18px rgba(255, 78, 200, 0.85),
-    0 0 40px rgba(225, 20, 133, 0.5),
-    inset 0 0 22px rgba(225, 20, 133, 0.2);
+.cs-banner-cta:hover {
+  background: var(--neon-magenta);
+  color: #FFFFFF;
+  border-color: var(--neon-bright);
+  box-shadow: 0 0 45px rgba(225, 20, 133, 0.95), 0 12px 35px rgba(225, 20, 133, 0.45);
+  transform: translateY(-3px) scale(1.02);
 }
 
-.coming-soon__contact:focus-visible {
-  outline: 2px solid #fff;
+.cs-banner-cta:active {
+  transform: translateY(-1px) scale(1.0);
+}
+
+.cs-banner-cta:focus-visible {
+  outline: 3px solid var(--neon-bright);
   outline-offset: 4px;
 }
 
-.coming-soon__stay {
+.cs-banner-stay {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  width: 100%;
-  max-width: 380px;
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: clamp(0.62rem, 2vw, 0.72rem);
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  color: rgba(255, 255, 255, 0.82);
+  gap: 12px;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
 }
 
-.coming-soon__stay-text {
-  flex-shrink: 0;
+.cs-stay-line {
+  width: 32px;
+  height: 1px;
+  background: rgba(225, 20, 133, 0.45);
+}
+
+.cs-stay-text {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+/* Right / Center Stage: The Bus Hero (Zero Box, Zero Card, Fully Seamless) */
+.cs-banner-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  animation: csBusFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+@keyframes csBusFadeIn {
+  from { opacity: 0; transform: scale(0.97) translateY(16px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Automotive Studio Underglow & Stage Aura */
+.cs-bus-stage-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 100%;
+  background: radial-gradient(ellipse 75% 70% at 50% 50%, rgba(225, 20, 133, 0.22) 0%, rgba(14, 2, 18, 0.4) 50%, transparent 75%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cs-bus-road-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 25%;
+  background: radial-gradient(ellipse at 50% 90%, rgba(225, 20, 133, 0.4) 0%, transparent 70%);
+  filter: blur(24px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bus Hero Wrapper — Advanced Edge Dissolve Masking (No rectangular box) */
+.cs-bus-hero-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 660px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  /* CSS mask to seamlessly feather the perimeter into the dark background */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 8%, black 86%, transparent 100%);
+  mask-image:
+    linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 8%, black 86%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Exact Authentic Bus Photograph */
+.cs-bus-hero-img {
+  width: 100%;
+  height: auto;
+  max-height: clamp(480px, 78vh, 760px);
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: none; /* Authentic bus colors strictly preserved */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-bus-hero-wrapper:hover .cs-bus-hero-img {
+  transform: scale(1.02);
+}
+
+/* Multi-directional Feather Dissolves (Ensures 100% borderless dark integration) */
+.cs-edge-fade {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.cs-edge-fade--left {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 14%;
+  background: linear-gradient(to right, var(--deep-black) 0%, rgba(5, 1, 6, 0.95) 25%, transparent 100%);
+}
+
+.cs-edge-fade--right {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 14%;
+  background: linear-gradient(to left, var(--deep-black) 0%, rgba(5, 1, 6, 0.9) 25%, transparent 100%);
+}
+
+.cs-edge-fade--top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10%;
+  background: linear-gradient(to bottom, var(--deep-black) 0%, rgba(5, 1, 6, 0.75) 30%, transparent 100%);
+}
+
+.cs-edge-fade--bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 14%;
+  background: linear-gradient(to top, var(--deep-black) 0%, rgba(5, 1, 6, 0.92) 35%, transparent 100%);
+}
+
+/* Bottom Minimal Footer Bar */
+.cs-banner-footer {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  padding: 16px 36px 24px;
+  border-top: 1px solid rgba(225, 20, 133, 0.15);
+  background: rgba(5, 1, 6, 0.7);
+  backdrop-filter: blur(12px);
+}
+
+.cs-banner-footer-inner {
+  max-width: 1560px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.cs-footer-management {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cs-footer-management strong {
+  color: #FFFFFF;
+  letter-spacing: 0.04em;
+}
+
+.cs-footer-dot {
+  color: var(--neon-magenta);
+}
+
+.cs-footer-copyright {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.78rem;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1200px) {
+  .cs-banner-grid {
+    gap: 36px;
+  }
+  .cs-bus-hero-wrapper {
+    max-width: 540px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cs-banner-hero {
+    padding: 20px 24px 30px;
+  }
+
+  .cs-banner-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .cs-banner-content {
+    align-items: center;
+    max-width: 100%;
+    gap: 24px;
+  }
+
+  .cs-brand-rule {
+    margin: 10px auto 0;
+  }
+
+  .cs-banner-actions {
+    align-items: center;
+  }
+
+  .cs-banner-cta {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .cs-bus-hero-wrapper {
+    max-width: 500px;
+  }
+
+  .cs-bus-hero-img {
+    max-height: clamp(380px, 54vh, 540px);
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-banner-topbar {
+    padding: 18px 20px 10px;
+  }
+
+  .cs-banner-hero {
+    padding: 10px 20px 24px;
+  }
+
+  .cs-banner-footer {
+    padding: 14px 20px 18px;
+  }
+
+  .cs-banner-footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .cs-footer-management {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cs-bus-hero-wrapper {
+    max-width: 100%;
+  }
+
+  .cs-bus-hero-img {
+    max-height: clamp(340px, 50vh, 480px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-banner-content,
+  .cs-banner-visual,
+  .cs-banner-ambient--bus,
+  .cs-chip-pulse,
+  .cs-headline-accent {
+    animation: none !important;
+  }
+}
+
+
+/* ==========================================================================
+   DHAM REJINI — FULL BUS CINEMATIC HERO + FALLING TYPOGRAPHY EFFECT
+   ========================================================================== */
+.cinematic-hero-section {
+  --neon-magenta: #E11485;
+  --neon-bright: #FF4EC8;
+  --neon-dark: #8C0C55;
+  --deep-black: #050106;
+  --midnight-purple: #0C020F;
+
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background-color: var(--deep-black);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  isolation: isolate;
+}
+
+/* Layer 1: Dark Cinematic Atmosphere Background */
+.hero-layer-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 85% 65% at 50% 50%, rgba(20, 3, 24, 0.75) 0%, var(--deep-black) 85%),
+    linear-gradient(180deg, #070108 0%, var(--deep-black) 50%, #08010A 100%);
+  pointer-events: none;
+}
+
+.hero-layer-ambient-aura {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90vw, 850px);
+  height: min(85vh, 750px);
+  background: radial-gradient(ellipse at center, rgba(225, 20, 133, 0.22) 0%, rgba(140, 12, 85, 0.1) 45%, transparent 75%);
+  filter: blur(60px);
+  z-index: 1;
+  pointer-events: none;
+  animation: heroAuraPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes heroAuraPulse {
+  0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.75; }
+  100% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+}
+
+/* Layer 2: Original Dam Rajini Bus (Full Bus Visible, Contain, No Cropping) */
+.hero-layer-bus {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px, 4vh, 48px) 16px;
+  pointer-events: none;
+}
+
+.hero-full-bus-img {
+  height: 100%;
+  max-height: clamp(520px, 86vh, 900px);
+  width: auto;
+  max-width: min(95vw, 700px);
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  /* Soft depth of field blur */
+  filter: blur(2px);
+  animation: heroBusFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: filter 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes heroBusFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Layer 3: Soft Depth-of-Field Ambient Layer */
+.hero-layer-dof-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(225, 20, 133, 0.12) 0%, transparent 60%);
+}
+
+/* Layer 4: Dark Readability Vignette Gradient (transparent black -> soft black -> transparent black) */
+.hero-layer-readability-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 85% 75% at 50% 50%, rgba(5, 1, 6, 0.52) 0%, rgba(5, 1, 6, 0.76) 70%, #050106 100%),
+    linear-gradient(180deg, rgba(5, 1, 6, 0.72) 0%, rgba(5, 1, 6, 0.35) 45%, rgba(5, 1, 6, 0.85) 100%);
+}
+
+/* Top Subtle Status Bar */
+.hero-top-status-bar {
+  position: relative;
+  z-index: 12;
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 24px 36px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: csHeroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(14, 2, 18, 0.85);
+  border: 1px solid rgba(225, 20, 133, 0.4);
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 18px rgba(225, 20, 133, 0.25);
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.status-dot-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-magenta);
+  box-shadow: 0 0 8px var(--neon-magenta), 0 0 16px var(--neon-magenta);
+  animation: csDotPulse 2s ease-in-out infinite;
+}
+
+.hero-reg-plate {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: rgba(5, 1, 6, 0.7);
+  border: 1px solid rgba(225, 20, 133, 0.25);
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--neon-bright);
+}
+
+/* Layer 5: Falling Typography Stage (Assembles over the bus) */
+.hero-stage-container {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 24px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-falling-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Falling Characters Core Engine */
+.falling-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-130px) rotate(-4deg);
+  filter: blur(5px);
+  animation: letterFall 1.1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes letterFall {
+  0% {
+    opacity: 0;
+    transform: translateY(-130px) rotate(-4.5deg);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 0.95;
+    transform: translateY(8px) rotate(1deg);
+    filter: blur(0.5px);
+  }
+  82% {
+    opacity: 1;
+    transform: translateY(-3px) rotate(-0.5deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+.falling-space {
+  display: inline-block;
+  width: 0.35em;
+}
+
+/* Brand Name Falling Block: DHAM REJINI */
+.hero-brand-falling {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 7.5vw, 6.2rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 0.98;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.falling-word {
+  display: inline-flex;
   white-space: nowrap;
 }
 
-.coming-soon__stay-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(225, 20, 133, 0.85), transparent);
-  box-shadow: 0 0 8px rgba(225, 20, 133, 0.55);
+.char-dham {
+  color: #FFFFFF;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(225, 20, 133, 0.4);
 }
 
-@keyframes csRise {
+.char-rejini {
+  color: var(--neon-bright);
+  text-shadow:
+    0 0 16px rgba(255, 78, 200, 0.95),
+    0 0 35px rgba(225, 20, 133, 0.85),
+    0 0 70px rgba(225, 20, 133, 0.5);
+}
+
+/* Sub-brand: SPECIAL HIRE */
+.hero-subbrand-fade {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0;
+  animation: heroFadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.35s forwards;
+}
+
+.hero-subbrand-text {
+  font-family: var(--font-heading);
+  font-size: clamp(0.85rem, 1.8vw, 1.15rem);
+  font-weight: 700;
+  letter-spacing: 0.44em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-indent: 0.44em;
+  text-shadow: 0 0 12px rgba(225, 20, 133, 0.5);
+}
+
+.hero-subbrand-rule {
+  width: clamp(24px, 5vw, 60px);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-magenta), transparent);
+  box-shadow: 0 0 8px rgba(225, 20, 133, 0.7);
+}
+
+/* Main Headline: A NEW EXPERIENCE IS COMING. */
+.hero-headline-falling {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.falling-line {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.line-eyebrow {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2.8vw, 2.3rem);
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.char-eyebrow {
+  color: #FFFFFF;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.9);
+}
+
+.line-coming {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5.6vw, 4.8rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.char-coming {
+  color: var(--neon-bright);
+  text-shadow:
+    0 0 18px rgba(255, 78, 200, 0.95),
+    0 0 38px rgba(225, 20, 133, 0.85),
+    0 0 75px rgba(225, 20, 133, 0.45);
+}
+
+/* Supporting Text */
+.hero-supporting-text {
+  margin: 6px auto 0;
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 620px;
+  line-height: 1.6;
+  opacity: 0;
+  animation: heroFadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 2.25s forwards;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+}
+
+/* Layer 6: Contact Action CTA */
+.hero-cta-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+  opacity: 0;
+  animation: heroFadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 2.5s forwards;
+}
+
+.hero-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 46px;
+  border-radius: 9999px;
+  background: rgba(14, 2, 18, 0.78);
+  border: 1.8px solid var(--neon-magenta);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  text-transform: uppercase;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 24px rgba(225, 20, 133, 0.4), 0 10px 30px rgba(0, 0, 0, 0.85);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.hero-contact-btn:hover {
+  background: var(--neon-magenta);
+  color: #FFFFFF;
+  border-color: var(--neon-bright);
+  box-shadow: 0 0 45px rgba(225, 20, 133, 0.95), 0 12px 35px rgba(225, 20, 133, 0.5);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.hero-contact-btn:active {
+  transform: translateY(-1px) scale(1.0);
+}
+
+.hero-contact-btn:focus-visible {
+  outline: 3px solid var(--neon-bright);
+  outline-offset: 4px;
+}
+
+.hero-stay-tuned {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.76rem;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+.stay-tuned-line {
+  width: 32px;
+  height: 1px;
+  background: rgba(225, 20, 133, 0.5);
+}
+
+.stay-tuned-text {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+/* Bottom Strip */
+.hero-bottom-strip {
+  position: relative;
+  z-index: 12;
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 16px 36px 24px;
+  border-top: 1px solid rgba(225, 20, 133, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+  animation: csHeroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-strip-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-strip-left strong {
+  color: #FFFFFF;
+  letter-spacing: 0.04em;
+}
+
+.strip-divider {
+  color: var(--neon-magenta);
+}
+
+.hero-strip-right {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.78rem;
+}
+
+@keyframes heroFadeSlideUp {
   from {
     opacity: 0;
-    transform: translateY(22px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -4176,87 +4965,79 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
-@keyframes csNeonPulse {
-  0%, 100% {
-    text-shadow:
-      0 0 6px rgba(255, 78, 200, 1),
-      0 0 18px rgba(225, 20, 133, 0.95),
-      0 0 40px rgba(225, 20, 133, 0.7),
-      0 0 70px rgba(225, 20, 133, 0.4);
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .hero-top-status-bar {
+    padding: 20px 24px 10px;
   }
-  50% {
-    text-shadow:
-      0 0 10px rgba(255, 78, 200, 1),
-      0 0 28px rgba(255, 78, 200, 0.95),
-      0 0 55px rgba(225, 20, 133, 0.85),
-      0 0 90px rgba(225, 20, 133, 0.55);
+  .hero-stage-container {
+    padding: 20px 20px;
   }
-}
-
-@keyframes csGlowPulse {
-  0%, 100% { opacity: 0.55; transform: translateX(-50%) scale(1); }
-  50% { opacity: 0.95; transform: translateX(-50%) scale(1.08); }
-}
-
-@keyframes csButtonGlow {
-  0%, 100% {
-    box-shadow:
-      0 0 12px rgba(225, 20, 133, 0.65),
-      0 0 28px rgba(225, 20, 133, 0.35),
-      inset 0 0 18px rgba(225, 20, 133, 0.12);
+  .hero-full-bus-img {
+    max-height: clamp(480px, 75vh, 700px);
+    max-width: min(92vw, 580px);
   }
-  50% {
-    box-shadow:
-      0 0 18px rgba(255, 78, 200, 0.8),
-      0 0 36px rgba(225, 20, 133, 0.5),
-      inset 0 0 22px rgba(225, 20, 133, 0.18);
+  .hero-bottom-strip {
+    padding: 14px 24px 20px;
   }
 }
 
-@keyframes csBusDrift {
-  from { transform: scale(1.05) translateY(0); }
-  to { transform: scale(1.1) translateY(-1.5%); }
-}
-
-@media (min-width: 768px) {
-  .coming-soon__stage {
-    gap: 1.15rem;
-    padding-top: 2.1rem;
-    padding-bottom: 2.4rem;
+@media (max-width: 640px) {
+  .hero-top-status-bar {
+    padding: 16px 20px 8px;
+    justify-content: center;
   }
-
-  .coming-soon__bus {
-    height: clamp(300px, 40vh, 440px);
+  .hero-reg-plate {
+    display: none;
   }
-}
-
-@media (max-width: 420px) {
-  .coming-soon__stay {
-    letter-spacing: 0.14em;
-    gap: 0.45rem;
+  .hero-stage-container {
+    padding: 16px 16px;
+    gap: 14px;
   }
-
-  .coming-soon__contact {
-    letter-spacing: 0.2em;
-    text-indent: 0.2em;
-    min-width: 100%;
+  .hero-full-bus-img {
+    max-height: clamp(380px, 65vh, 520px);
+    max-width: 95vw;
+  }
+  .hero-brand-falling {
+    font-size: clamp(2.4rem, 11vw, 3.8rem);
+  }
+  .line-eyebrow {
+    font-size: clamp(1.1rem, 4.6vw, 1.6rem);
+  }
+  .line-coming {
+    font-size: clamp(2rem, 8.5vw, 3.2rem);
+  }
+  .hero-contact-btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 16px 28px;
+  }
+  .hero-bottom-strip {
+    padding: 12px 20px 16px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  .hero-strip-left {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .coming-soon__brand,
-  .coming-soon__headline,
-  .coming-soon__visual,
-  .coming-soon__cta,
-  .coming-soon__coming,
-  .coming-soon__contact,
-  .coming-soon__glow,
-  .coming-soon__road-glow,
-  .coming-soon__bus {
+  .falling-char,
+  .hero-subbrand-fade,
+  .hero-supporting-text,
+  .hero-cta-wrapper,
+  .hero-full-bus-img,
+  .hero-layer-ambient-aura,
+  .status-dot-pulse {
     animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
   }
-
-  .coming-soon__bus {
-    transform: none;
+  .hero-full-bus-img {
+    filter: blur(2px) !important;
   }
 }
