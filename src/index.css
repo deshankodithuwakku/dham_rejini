@@ -3895,3 +3895,368 @@ input:focus, select:focus, textarea:focus {
   outline: 2px solid var(--primary-purple);
   outline-offset: 2px;
 }
+
+/* ==========================================================================
+   COMING SOON — Launch gate (first deploy)
+   ========================================================================== */
+.coming-soon {
+  --cs-neon: #e11485;
+  --cs-neon-bright: #ff4ec8;
+  --cs-script: "Yellowtail", cursive;
+
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -10%, rgba(140, 12, 85, 0.55) 0%, transparent 58%),
+    radial-gradient(ellipse 80% 45% at 50% 110%, rgba(100, 8, 65, 0.5) 0%, transparent 55%),
+    linear-gradient(180deg, #140310 0%, #050106 42%, #0b0210 100%);
+  color: #fff;
+}
+
+.coming-soon__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.coming-soon__glow--top {
+  top: -14%;
+  left: 50%;
+  width: min(72vw, 560px);
+  height: 300px;
+  transform: translateX(-50%);
+  background: rgba(225, 20, 133, 0.38);
+  animation: csGlowPulse 4.5s ease-in-out infinite;
+}
+
+.coming-soon__glow--bottom {
+  bottom: -10%;
+  left: 50%;
+  width: min(85vw, 680px);
+  height: 240px;
+  transform: translateX(-50%);
+  background: rgba(225, 20, 133, 0.3);
+  animation: csGlowPulse 5.5s ease-in-out infinite reverse;
+}
+
+.coming-soon__stage {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 760px);
+  padding: clamp(1.35rem, 3.5vw, 2.4rem) clamp(1rem, 4vw, 1.75rem) clamp(1.5rem, 3.5vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(0.85rem, 2.2vw, 1.25rem);
+}
+
+.coming-soon__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 440px;
+  animation: csRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.coming-soon__brand-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cs-neon), transparent);
+  box-shadow: 0 0 10px rgba(225, 20, 133, 0.7);
+}
+
+.coming-soon__brand-block {
+  flex-shrink: 0;
+}
+
+.coming-soon__logo {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 5.8vw, 2.45rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.coming-soon__logo-dham {
+  color: #fff;
+}
+
+.coming-soon__logo-rejini {
+  color: var(--cs-neon-bright);
+  text-shadow:
+    0 0 8px rgba(255, 78, 200, 0.95),
+    0 0 22px rgba(225, 20, 133, 0.8),
+    0 0 42px rgba(225, 20, 133, 0.5);
+}
+
+.coming-soon__tagline {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-heading);
+  font-size: clamp(0.68rem, 2vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  color: rgba(255, 255, 255, 0.92);
+  text-indent: 0.42em;
+}
+
+.coming-soon__headline {
+  animation: csRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.coming-soon__eyebrow {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 6vw, 2.55rem);
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: #fff;
+  line-height: 1.05;
+}
+
+.coming-soon__coming {
+  margin: 0.05rem 0 0.5rem;
+  font-family: var(--cs-script);
+  font-size: clamp(3.1rem, 13.5vw, 5.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  color: var(--cs-neon-bright);
+  text-shadow:
+    0 0 6px rgba(255, 78, 200, 1),
+    0 0 18px rgba(225, 20, 133, 0.95),
+    0 0 40px rgba(225, 20, 133, 0.7),
+    0 0 70px rgba(225, 20, 133, 0.4);
+  animation: csNeonPulse 3.2s ease-in-out infinite;
+}
+
+.coming-soon__sub {
+  margin: 0 auto;
+  max-width: 28rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 2.4vw, 1rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.45;
+}
+
+.coming-soon__visual {
+  position: relative;
+  width: 100vw;
+  max-width: none;
+  margin: 0.1rem calc(50% - 50vw);
+  overflow: hidden;
+  isolation: isolate;
+  animation: csRise 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.coming-soon__bus {
+  width: 100%;
+  height: clamp(240px, 48vw, 420px);
+  object-fit: cover;
+  object-position: center 42%;
+  filter: saturate(1.25) contrast(1.1) brightness(0.92);
+  transform: scale(1.05);
+  animation: csBusDrift 14s ease-in-out infinite alternate;
+}
+
+.coming-soon__visual-fade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, #050106 0%, transparent 18%, transparent 70%, #050106 100%),
+    linear-gradient(90deg, rgba(5, 1, 6, 0.7) 0%, transparent 22%, transparent 78%, rgba(5, 1, 6, 0.7) 100%);
+  pointer-events: none;
+}
+
+.coming-soon__road-glow {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  width: min(70%, 520px);
+  height: 35%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(225, 20, 133, 0.45) 0%, transparent 70%);
+  filter: blur(18px);
+  pointer-events: none;
+  animation: csGlowPulse 3.8s ease-in-out infinite;
+}
+
+.coming-soon__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  width: 100%;
+  margin-top: 0.35rem;
+  animation: csRise 1s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+.coming-soon__contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-width: min(100%, 290px);
+  padding: 0.95rem 2.15rem;
+  border-radius: 9999px;
+  border: 2px solid var(--cs-neon);
+  background: rgba(8, 1, 10, 0.88);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  box-shadow:
+    0 0 12px rgba(225, 20, 133, 0.65),
+    0 0 28px rgba(225, 20, 133, 0.35),
+    inset 0 0 18px rgba(225, 20, 133, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  animation: csButtonGlow 2.8s ease-in-out infinite;
+}
+
+.coming-soon__contact:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: var(--cs-neon-bright);
+  background: rgba(225, 20, 133, 0.18);
+  box-shadow:
+    0 0 18px rgba(255, 78, 200, 0.85),
+    0 0 40px rgba(225, 20, 133, 0.5),
+    inset 0 0 22px rgba(225, 20, 133, 0.2);
+}
+
+.coming-soon__contact:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.coming-soon__stay {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 380px;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(0.62rem, 2vw, 0.72rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.coming-soon__stay-text {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.coming-soon__stay-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(225, 20, 133, 0.85), transparent);
+  box-shadow: 0 0 8px rgba(225, 20, 133, 0.55);
+}
+
+@keyframes csRise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes csNeonPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 6px rgba(255, 78, 200, 1),
+      0 0 18px rgba(225, 20, 133, 0.95),
+      0 0 40px rgba(225, 20, 133, 0.7),
+      0 0 70px rgba(225, 20, 133, 0.4);
+  }
+  50% {
+    text-shadow:
+      0 0 10px rgba(255, 78, 200, 1),
+      0 0 28px rgba(255, 78, 200, 0.95),
+      0 0 55px rgba(225, 20, 133, 0.85),
+      0 0 90px rgba(225, 20, 133, 0.55);
+  }
+}
+
+@keyframes csGlowPulse {
+  0%, 100% { opacity: 0.55; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.95; transform: translateX(-50%) scale(1.08); }
+}
+
+@keyframes csButtonGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 12px rgba(225, 20, 133, 0.65),
+      0 0 28px rgba(225, 20, 133, 0.35),
+      inset 0 0 18px rgba(225, 20, 133, 0.12);
+  }
+  50% {
+    box-shadow:
+      0 0 18px rgba(255, 78, 200, 0.8),
+      0 0 36px rgba(225, 20, 133, 0.5),
+      inset 0 0 22px rgba(225, 20, 133, 0.18);
+  }
+}
+
+@keyframes csBusDrift {
+  from { transform: scale(1.05) translateY(0); }
+  to { transform: scale(1.1) translateY(-1.5%); }
+}
+
+@media (min-width: 768px) {
+  .coming-soon__stage {
+    gap: 1.15rem;
+    padding-top: 2.1rem;
+    padding-bottom: 2.4rem;
+  }
+
+  .coming-soon__bus {
+    height: clamp(300px, 40vh, 440px);
+  }
+}
+
+@media (max-width: 420px) {
+  .coming-soon__stay {
+    letter-spacing: 0.14em;
+    gap: 0.45rem;
+  }
+
+  .coming-soon__contact {
+    letter-spacing: 0.2em;
+    text-indent: 0.2em;
+    min-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coming-soon__brand,
+  .coming-soon__headline,
+  .coming-soon__visual,
+  .coming-soon__cta,
+  .coming-soon__coming,
+  .coming-soon__contact,
+  .coming-soon__glow,
+  .coming-soon__road-glow,
+  .coming-soon__bus {
+    animation: none !important;
+  }
+
+  .coming-soon__bus {
+    transform: none;
+  }
+}
