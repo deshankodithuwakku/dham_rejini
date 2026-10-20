@@ -1,3 +1,4 @@
+import { assetUrl } from "../lib/assetUrl.js";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Utensils, Phone, MapPin, Clock, ArrowRight, Share2, Globe, Sparkles, MessageCircle, AlertCircle } from "lucide-react";
@@ -88,7 +89,7 @@ export default function KochchiRestaurant() {
             <div className="restaurant-about-visual">
               <div className="restaurant-food-highlight-card">
                 <img
-                  src="/assets/images/restaurant-food.jpg"
+                  src={assetUrl("assets/images/restaurant-food.jpg")}
                   alt="Kochchi Signature Dish"
                   className="restaurant-food-img"
                   loading="lazy"

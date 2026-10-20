@@ -1,3 +1,4 @@
+import { assetUrl } from "../lib/assetUrl.js";
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Compass, ShieldCheck, Clock, Award, Sparkles, Phone, CheckCircle } from "lucide-react";
@@ -119,7 +120,7 @@ export default function Home() {
           <div className="experience-box">
             <div className="experience-image-side">
               <img
-                src="/assets/images/interior-01.jpg"
+                src={assetUrl("assets/images/interior-01.jpg")}
                 alt="Dham Rejini Interior Cabin Experience"
                 className="experience-img"
                 loading="lazy"

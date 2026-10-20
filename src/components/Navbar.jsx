@@ -1,3 +1,4 @@
+import { assetUrl } from "../lib/assetUrl.js";
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowUpRight, ShieldCheck } from "lucide-react";
@@ -50,7 +51,7 @@ export default function Navbar() {
         {/* Brand / Logo */}
         <Link to="/" className="brand-logo" aria-label="Dham Rejini Home">
           <img
-            src="/assets/images/dham-rejini-logo.png"
+            src={assetUrl("assets/images/dham-rejini-logo.png")}
             alt="Dham Rejini Logo"
             className="brand-logo-img"
           />

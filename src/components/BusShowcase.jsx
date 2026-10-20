@@ -1,3 +1,4 @@
+import { assetUrl } from "../lib/assetUrl.js";
 import React from "react";
 import { Sparkles, Armchair, Compass, Maximize2, Award } from "lucide-react";
 import SectionHeading from "./SectionHeading";
@@ -25,7 +26,7 @@ export default function BusShowcase() {
           <div className="showcase-dual-display">
             <div className="showcase-image-frame">
               <img
-                src="/assets/images/bus-real.jpg"
+                src={assetUrl("assets/images/bus-real.jpg")}
                 alt="Dham Rejini Actual Front Profile SP NB - 4118"
                 className="showcase-bus-img"
                 loading="lazy"
@@ -38,7 +39,7 @@ export default function BusShowcase() {
 
             <div className="showcase-image-frame">
               <img
-                src="/assets/images/bus-highway.jpg"
+                src={assetUrl("assets/images/bus-highway.jpg")}
                 alt="Dham Rejini Coastal Highway Night Cruise"
                 className="showcase-bus-img"
                 loading="lazy"

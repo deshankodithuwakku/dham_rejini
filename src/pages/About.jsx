@@ -1,3 +1,4 @@
+import { assetUrl } from "../lib/assetUrl.js";
 import React from "react";
 import { Link } from "react-router-dom";
 import { ShieldCheck, Compass, Heart, Award, ArrowRight, Phone, Milestone, Sparkles } from "lucide-react";
@@ -55,14 +56,14 @@ export default function About() {
             <div className="about-col-media">
               <div className="about-image-card">
                 <img
-                  src="/assets/images/bus-real.jpg"
+                  src={assetUrl("assets/images/bus-real.jpg")}
                   alt="Dham Rejini VVIP Party Bus SP NB - 4118"
                   className="about-bus-photo"
                   loading="lazy"
                 />
                 <div className="about-image-caption">
                   <img
-                    src="/assets/images/dham-rejini-logo.png"
+                    src={assetUrl("assets/images/dham-rejini-logo.png")}
                     alt="Dham Rejini Logo"
                     className="about-logo-badge-img"
                   />

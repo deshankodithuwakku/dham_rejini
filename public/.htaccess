@@ -1,4 +1,4 @@
-# Hostinger Apache — serve SPA correctly
+# SPA fallback for the production build served from /dist
 <IfModule mod_mime.c>
   AddType application/javascript .js .mjs
   AddType text/css .css
@@ -7,9 +7,10 @@
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /
+  RewriteBase /dist/
+
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+  RewriteRule . /dist/index.html [L]
 </IfModule>

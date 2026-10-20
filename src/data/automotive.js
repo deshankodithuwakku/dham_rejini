@@ -1,9 +1,10 @@
+import { assetUrl } from "../lib/assetUrl.js";
 export const automotiveData = {
   brandName: "ALANKARA AUTOMOTIVE",
   tagline: "Precision Engineering • Automotive Solutions • Vehicle Care",
   leadText: "Specialized automotive workshop & vehicle enhancement facility managed by Supun Wijesinghe. Delivering dedicated vehicle care, diagnostics, and customized solutions.",
   ownerNote: "Part of the Supun Wijesinghe enterprise network, dedicated to technical automotive excellence.",
-  heroImage: "/assets/images/automotive-hero.jpg",
+  heroImage: assetUrl("assets/images/automotive-hero.jpg"),
   aboutText: "Alankara Automotive is the owner's dedicated automotive enterprise in Sri Lanka. From commercial fleet support to private vehicle conditioning, we prioritize high-standard craftsmanship, modern diagnostics, and dedicated vehicle reliability.",
   disclaimer: "Verified business registration details, workshop address, and specific service packages will be updated here by the owner.",
   services: [

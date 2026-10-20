@@ -1,3 +1,4 @@
+import { assetUrl } from "../lib/assetUrl.js";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Phone, ArrowUpRight, MessageCircle, MapPin, Shield } from "lucide-react";
@@ -14,7 +15,7 @@ export default function Footer() {
           <div className="footer-col brand-col">
             <Link to="/" className="footer-brand-logo" aria-label="Dham Rejini Home">
               <img
-                src="/assets/images/dham-rejini-logo.png"
+                src={assetUrl("assets/images/dham-rejini-logo.png")}
                 alt="Dham Rejini Logo"
                 className="footer-logo-img"
               />

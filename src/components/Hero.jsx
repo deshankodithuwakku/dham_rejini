@@ -1,3 +1,4 @@
+import { assetUrl } from "../lib/assetUrl.js";
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Image as ImageIcon, Sparkles } from "lucide-react";
@@ -16,7 +17,7 @@ export default function Hero() {
     <section className="hero-section" aria-label="Dham Rejini Hero Showcase">
       <div className="hero-background-container">
         <img
-          src="/assets/images/bus-highway.jpg"
+          src={assetUrl("assets/images/bus-highway.jpg")}
           alt="Dham Rejini Actual VVIP Party Bus SP NB - 4118"
           className="hero-image"
           loading="eager"
@@ -35,7 +36,7 @@ export default function Hero() {
 
             <div className="hero-logo-container">
               <img
-                src="/assets/images/dham-rejini-logo.png"
+                src={assetUrl("assets/images/dham-rejini-logo.png")}
                 alt="Dham Rejini Official Logo"
                 className="hero-logo-img"
               />

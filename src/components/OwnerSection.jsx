@@ -1,3 +1,4 @@
+import { assetUrl } from "../lib/assetUrl.js";
 import React from "react";
 import { ShieldCheck, Phone, CheckCircle, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -13,7 +14,7 @@ export default function OwnerSection({ showEnterpriseLinks = true }) {
             <div className="owner-visual-col">
               <div className="owner-image-frame">
                 <img
-                  src="/assets/images/owner-profile.jpg"
+                  src={assetUrl("assets/images/owner-profile.jpg")}
                   alt={`Owner ${businessInfo.ownerName}`}
                   className="owner-photo"
                   loading="lazy"

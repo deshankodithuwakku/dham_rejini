@@ -1,5 +1,5 @@
 # Hostinger deploys the full Git repo into public_html.
-# Production site is the Vite build in /dist.
+# The live site is the Vite build in /dist.
 
 <IfModule mod_mime.c>
   AddType application/javascript .js .mjs
@@ -11,10 +11,15 @@
   RewriteEngine On
   RewriteBase /
 
-  # Leave /dist alone
+  # Built app and its assets
   RewriteRule ^dist(/|$) - [L]
 
-  # Send homepage (and source index) to the built app
+  # Homepage
   RewriteRule ^$ /dist/ [R=302,L]
   RewriteRule ^index\.html$ /dist/ [R=302,L]
+
+  # Other site paths (about, gallery, contact, ...)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ /dist/$1 [R=302,L]
 </IfModule>
