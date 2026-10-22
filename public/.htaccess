@@ -1,16 +1,6 @@
-# SPA fallback for the production build served from /dist
+# Kept for the build output; root .htaccess handles public URLs.
 <IfModule mod_mime.c>
   AddType application/javascript .js .mjs
   AddType text/css .css
   AddType image/svg+xml .svg
-</IfModule>
-
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /dist/
-
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /dist/index.html [L]
 </IfModule>
