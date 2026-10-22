@@ -1,5 +1,5 @@
 # Hostinger serves the full Git repo from public_html.
-# Keep URLs at the domain root and map them to the Vite build in /dist.
+# Public URLs stay clean at https://dhamrejini.lk/
 
 <IfModule mod_mime.c>
   AddType application/javascript .js .mjs
@@ -7,17 +7,24 @@
   AddType image/svg+xml .svg
 </IfModule>
 
+DirectoryIndex dist/index.html index.html
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # Remove /dist from the public URL
-  RewriteRule ^dist/(.*)$ /$1 [R=301,L]
+  # Never show /index.html in the address bar
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ / [R=301,L]
+
+  # Never show /dist in the address bar
+  RewriteCond %{THE_REQUEST} \s/+dist/?[\s?] [NC]
   RewriteRule ^dist/?$ / [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+dist/([^\s?]*) [NC]
+  RewriteRule ^dist/(.*)$ /$1 [R=301,L]
 
   # Homepage
   RewriteRule ^$ dist/index.html [L]
-  RewriteRule ^index\.html$ dist/index.html [L]
 
   # Prefer production build files
   RewriteCond %{DOCUMENT_ROOT}/dist/$1 -f
