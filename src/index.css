@@ -644,6 +644,15 @@ input:focus, select:focus, textarea:focus {
   position: absolute;
   inset: 0;
   z-index: 1;
+  overflow: hidden;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .hero-image {
@@ -663,7 +672,14 @@ input:focus, select:focus, textarea:focus {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: var(--overlay-hero);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.68) 0%,
+    rgba(0, 0, 0, 0.55) 35%,
+    rgba(0, 0, 0, 0.75) 70%,
+    rgba(5, 1, 6, 0.95) 100%
+  );
+  pointer-events: none;
 }
 
 .hero-content-container {

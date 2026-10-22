@@ -1,10 +1,23 @@
 import { assetUrl } from "../lib/assetUrl.js";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Image as ImageIcon, Sparkles } from "lucide-react";
 import { businessInfo } from "../data/business";
+import heroVideo from "../assets/videos/hero.mp4";
 
 export default function Hero() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch((err) => {
+        console.warn("Video autoplay error:", err);
+      });
+    }
+  }, []);
+
   const handleScrollToBooking = (e) => {
     e.preventDefault();
     const element = document.getElementById("booking");
@@ -16,12 +29,18 @@ export default function Hero() {
   return (
     <section className="hero-section" aria-label="Dham Rejini Hero Showcase">
       <div className="hero-background-container">
-        <img
-          src={assetUrl("assets/images/bus-highway.jpg")}
-          alt="Dham Rejini Actual VVIP Party Bus SP NB - 4118"
-          className="hero-image"
-          loading="eager"
-        />
+        <video
+          ref={videoRef}
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={assetUrl("assets/images/bus-highway.jpg")}
+        >
+          <source src={heroVideo} type="video/mp4" />
+          <source src={assetUrl("assets/videos/hero.mp4")} type="video/mp4" />
+        </video>
         <div className="hero-overlay" />
       </div>
 
