@@ -122,10 +122,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <p className="copyright-text">
-            © {currentYear} Dham Rejini. All Rights Reserved. Special Hire Sri Lanka.
+            POWERD by Pramuditha Bandara
           </p>
           <div className="footer-bottom-meta">
-            <span>Powered by Precision Travel Logistics</span>
+            <span>Dham Rejini. All Rights Reserved. Special Hire Sri Lanka.</span>
           </div>
         </div>
       </div>

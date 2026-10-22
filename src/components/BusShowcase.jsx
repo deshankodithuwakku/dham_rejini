@@ -26,8 +26,8 @@ export default function BusShowcase() {
           <div className="showcase-dual-display">
             <div className="showcase-image-frame">
               <img
-                src={assetUrl("assets/images/bus-real.jpg")}
-                alt="Dham Rejini Actual Front Profile SP NB - 4118"
+                src={assetUrl("assets/images/collection-05-side-profile.jpg")}
+                alt="Dham Rejini Actual Coach Profile SP NB - 4118"
                 className="showcase-bus-img"
                 loading="lazy"
               />
@@ -39,14 +39,14 @@ export default function BusShowcase() {
 
             <div className="showcase-image-frame">
               <img
-                src={assetUrl("assets/images/bus-highway.jpg")}
-                alt="Dham Rejini Coastal Highway Night Cruise"
+                src={assetUrl("assets/images/collection-04-sound-neon.jpg")}
+                alt="Dham Rejini Neon Party Interior & Sound Wall"
                 className="showcase-bus-img"
                 loading="lazy"
               />
               <div className="showcase-badge-floating">
                 <span className="floating-glow"></span>
-                <span className="floating-text">LUMINOUS NIGHT PRESENCE</span>
+                <span className="floating-text">CLUB SOUND & NEON LOUNGE</span>
               </div>
             </div>
           </div>

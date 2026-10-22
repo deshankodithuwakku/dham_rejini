@@ -33,8 +33,8 @@ export default function Navbar() {
     { name: "HOME", path: "/" },
     { name: "ABOUT", path: "/about" },
     { name: "SPECIAL HIRE", path: "/special-hire" },
-    { name: "ALANKARA AUTOMOTIVE", path: "/alankara-automotive" },
-    { name: "KOCHCHI RESTAURANT", path: "/kochchi-restaurant" },
+    { name: "AUTOMOTIVE", fullName: "ALANKARA AUTOMOTIVE", path: "/alankara-automotive" },
+    { name: "RESTAURANT", fullName: "KOCHCHI RESTAURANT", path: "/kochchi-restaurant" },
     { name: "GALLERY", path: "/gallery" },
     { name: "CONTACT", path: "/contact" },
   ];
@@ -55,10 +55,6 @@ export default function Navbar() {
             alt="Dham Rejini Logo"
             className="brand-logo-img"
           />
-          <div className="brand-text-block">
-            <span className="brand-title">{businessInfo.brandName}</span>
-            <span className="brand-subtitle">{businessInfo.businessType}</span>
-          </div>
         </Link>
 
         {/* Desktop Navigation Links */}
@@ -114,7 +110,7 @@ export default function Navbar() {
                   className={`mobile-nav-link ${isActive(link.path) ? "active" : ""}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {link.name}
+                  {link.fullName || link.name}
                 </Link>
               </li>
             ))}

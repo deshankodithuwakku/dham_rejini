@@ -5,7 +5,7 @@ import { ArrowRight, Compass, ShieldCheck, Clock, Award, Sparkles, Phone, CheckC
 import Hero from "../components/Hero";
 import Marquee from "../components/Marquee";
 import BookingForm from "../components/BookingForm";
-import BusShowcase from "../components/BusShowcase";
+import BusPhotoCollection from "../components/BusPhotoCollection";
 import ServiceCard from "../components/ServiceCard";
 import GalleryGrid from "../components/GalleryGrid";
 import OwnerSection from "../components/OwnerSection";
@@ -87,8 +87,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Large Bus Showcase ("MEET DHAM REJINI") */}
-      <BusShowcase />
+      {/* 5. Authentic Bus Photo Collection */}
+      <BusPhotoCollection />
+
+
 
       {/* 6. Special Hire Services Preview */}
       <section className="services-section section-spacing">
@@ -120,8 +122,8 @@ export default function Home() {
           <div className="experience-box">
             <div className="experience-image-side">
               <img
-                src={assetUrl("assets/images/interior-01.jpg")}
-                alt="Dham Rejini Interior Cabin Experience"
+                src={assetUrl("assets/images/collection-03-luxury-seats.jpg")}
+                alt="Dham Rejini Luxury VIP Cabin Seating Lounge"
                 className="experience-img"
                 loading="lazy"
               />

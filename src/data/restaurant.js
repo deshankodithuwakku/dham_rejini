@@ -78,15 +78,15 @@ export const restaurantData = {
     }
   ],
   contact: {
-    phonePlaceholder: "Reservation Line: [To be added by owner]",
-    whatsapp: "94767958695",
-    whatsappUrl: "https://wa.me/94767958695?text=Hello%20Kochchi%20Restaurant%2C%20I%20would%20like%20to%20inquire%20about%20table%20reservations.",
+    phone: "+94 70 779 9999",
+    whatsapp: "94707799999",
+    whatsappUrl: "https://wa.me/94707799999?text=Hello%20Kochchi%20Restaurant%2C%20I%20would%20like%20to%20inquire%20about%20table%20reservations.",
     addressPlaceholder: "Restaurant Location: [Verified address to be added by owner]",
     hoursPlaceholder: "Opening Hours: [To be confirmed by owner - Lunch & Dinner service]",
     socials: [
       { name: "Instagram", url: "#" },
       { name: "Facebook", url: "#" },
-      { name: "WhatsApp", url: "https://wa.me/94767958695" }
+      { name: "WhatsApp", url: "https://wa.me/94707799999" }
     ]
   }
 };

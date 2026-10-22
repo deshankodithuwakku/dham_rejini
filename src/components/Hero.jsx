@@ -36,7 +36,7 @@ export default function Hero() {
           loop
           muted
           playsInline
-          poster={assetUrl("assets/images/bus-highway.jpg")}
+          poster={assetUrl("assets/videos/hero.mp4")}
         >
           <source src={heroVideo} type="video/mp4" />
           <source src={assetUrl("assets/videos/hero.mp4")} type="video/mp4" />
@@ -49,8 +49,8 @@ export default function Hero() {
           {/* Main Hero Branding & Actions */}
           <div className="hero-text-content">
             <div className="hero-badge">
-              <Sparkles size={16} />
-              <span>VVIP PARTY BUS • SPECIAL HIRE</span>
+              <Sparkles size={15} />
+              <span>SRI LANKA'S PREMIER VVIP PARTY BUS</span>
             </div>
 
             <div className="hero-logo-container">
@@ -98,7 +98,7 @@ export default function Hero() {
               <div className="meta-divider" />
               <div className="meta-item">
                 <span className="meta-label">REGISTRATION</span>
-                <strong className="meta-val">SP NB - 4118</strong>
+                <strong className="meta-val">SP NB - 4110</strong>
               </div>
             </div>
           </div>

@@ -262,7 +262,7 @@ export default function KochchiRestaurant() {
                     className="btn-whatsapp full-width"
                   >
                     <MessageCircle size={18} />
-                    <span>WHATSAPP RESERVATIONS: 0767958695</span>
+                    <span>WHATSAPP RESERVATIONS: {restaurantData.contact.phone}</span>
                   </a>
 
                   <div className="restaurant-socials-row">

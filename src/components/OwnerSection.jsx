@@ -62,7 +62,7 @@ export default function OwnerSection({ showEnterpriseLinks = true }) {
                   className="btn-whatsapp owner-wa-btn"
                 >
                   <Phone size={18} />
-                  <span>CHAT WITH SUPUN: {businessInfo.primaryPhone}</span>
+                  <span>CHAT WITH {businessInfo.ownerName}: {businessInfo.primaryPhone}</span>
                 </a>
               </div>
 

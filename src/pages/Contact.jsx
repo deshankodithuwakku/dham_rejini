@@ -262,7 +262,7 @@ export default function Contact() {
                     className="btn-whatsapp full-width contact-submit-btn"
                   >
                     <MessageCircle size={18} />
-                    <span>SEND VIA WHATSAPP (0767958695)</span>
+                    <span>SEND VIA WHATSAPP ({businessInfo.primaryPhone})</span>
                   </button>
                 </form>
               </div>

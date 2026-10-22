@@ -1,5 +1,18 @@
 import React, { useState } from "react";
-import { Calendar, MapPin, Users, Phone, User, FileText, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import {
+  Calendar,
+  CalendarDays,
+  MapPin,
+  Users,
+  Phone,
+  User,
+  FileText,
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  Route,
+  Sparkles,
+} from "lucide-react";
 import { businessInfo } from "../data/business";
 
 export default function BookingForm({ id = "booking" }) {
@@ -7,14 +20,33 @@ export default function BookingForm({ id = "booking" }) {
     name: "",
     phone: "",
     date: "",
+    duration: "1",
     from: "",
     to: "",
     passengers: "15 - 25 passengers",
     requirements: "",
   });
 
+  const [dailyPlans, setDailyPlans] = useState({
+    1: "",
+    2: "",
+  });
+
   const [errors, setErrors] = useState({});
   const [submittedSuccess, setSubmittedSuccess] = useState(false);
+
+  const durationOptions = [
+    { value: "1", label: "1 Day (Same Day Return)" },
+    { value: "2", label: "2 Days (1 Night)" },
+    { value: "3", label: "3 Days (2 Nights)" },
+    { value: "4", label: "4 Days (3 Nights)" },
+    { value: "5", label: "5 Days (4 Nights)" },
+    { value: "6", label: "6 Days (5 Nights)" },
+    { value: "7", label: "7 Days (1 Week)" },
+    { value: "8", label: "8 Days" },
+    { value: "9", label: "9 Days" },
+    { value: "10", label: "10+ Days Tour" },
+  ];
 
   const passengerOptions = [
     "Under 15 passengers",
@@ -22,8 +54,10 @@ export default function BookingForm({ id = "booking" }) {
     "26 - 35 passengers",
     "36 - 45 passengers",
     "46 - 54 passengers",
-    "Large Group / Multiple Trips"
+    "Large Group / Multiple Trips",
   ];
+
+  const daysCount = Math.max(1, Math.min(10, parseInt(formData.duration, 10) || 1));
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,8 +71,27 @@ export default function BookingForm({ id = "booking" }) {
     }
   };
 
+  const handleDailyPlanChange = (dayNum, text) => {
+    setDailyPlans((prev) => ({
+      ...prev,
+      [dayNum]: text,
+    }));
+  };
+
   const validate = () => {
     const newErrors = {};
+
+    if (!formData.from.trim()) {
+      newErrors.from = "Please enter your pickup location.";
+    }
+
+    if (!formData.to.trim()) {
+      newErrors.to = "Please enter your destination.";
+    }
+
+    if (!formData.date) {
+      newErrors.date = "Please select a travel date.";
+    }
 
     if (!formData.name.trim()) {
       newErrors.name = "Please enter your name.";
@@ -48,18 +101,6 @@ export default function BookingForm({ id = "booking" }) {
       newErrors.phone = "Please enter your phone number.";
     } else if (formData.phone.trim().length < 8) {
       newErrors.phone = "Please enter a valid contact phone number.";
-    }
-
-    if (!formData.date) {
-      newErrors.date = "Please select a travel date.";
-    }
-
-    if (!formData.from.trim()) {
-      newErrors.from = "Please enter your pickup location.";
-    }
-
-    if (!formData.to.trim()) {
-      newErrors.to = "Please enter your destination.";
     }
 
     setErrors(newErrors);
@@ -73,8 +114,21 @@ export default function BookingForm({ id = "booking" }) {
       return;
     }
 
-    // Build the required WhatsApp Message structure with DHAM REJINI
-    const formattedMessage = `DHAM REJINI SPECIAL HIRE - BOOKING REQUEST\nCustomer Name: ${formData.name.trim()}\nPhone: ${formData.phone.trim()}\nTravel Date: ${formData.date}\nFrom: ${formData.from.trim()}\nTo: ${formData.to.trim()}\nPassengers: ${formData.passengers}\nAdditional Requirements: ${formData.requirements.trim() || "None specified"}\nPlease confirm availability and provide the quotation.`;
+    // Build day-by-day itinerary text
+    const filledDays = [];
+    for (let i = 1; i <= daysCount; i++) {
+      const plan = dailyPlans[i]?.trim();
+      if (plan) {
+        filledDays.push(`• Day ${i}: ${plan}`);
+      }
+    }
+    const dailyPlanText =
+      filledDays.length > 0
+        ? `\n\nDaily Itinerary:\n${filledDays.join("\n")}`
+        : "";
+
+    // Build the formatted WhatsApp Message structure with DHAM REJINI
+    const formattedMessage = `DHAM REJINI SPECIAL HIRE - BOOKING REQUEST\nCustomer Name: ${formData.name.trim()}\nPhone: ${formData.phone.trim()}\nTravel Date: ${formData.date}\nDuration: ${daysCount} ${daysCount === 1 ? "Day" : "Days"}\nFrom: ${formData.from.trim()}\nTo: ${formData.to.trim()}${dailyPlanText}\nPassengers: ${formData.passengers}\nAdditional Requirements: ${formData.requirements.trim() || "None specified"}\n\nPlease confirm availability and provide the quotation.`;
 
     const whatsappUrl = `https://wa.me/${businessInfo.whatsappNumber}?text=${encodeURIComponent(formattedMessage)}`;
 
@@ -122,7 +176,7 @@ export default function BookingForm({ id = "booking" }) {
           <form onSubmit={handleSubmit} className="booking-form" noValidate>
             <div className="booking-grid">
               {/* Pickup Location */}
-              <div className={`form-group ${errors.from ? "has-error" : ""}`}>
+              <div className={`form-group col-span-3 ${errors.from ? "has-error" : ""}`}>
                 <label htmlFor="booking-from" className="form-label">
                   <MapPin size={16} className="field-icon" />
                   <span>FROM (Pickup Location) *</span>
@@ -144,7 +198,7 @@ export default function BookingForm({ id = "booking" }) {
               </div>
 
               {/* Destination */}
-              <div className={`form-group ${errors.to ? "has-error" : ""}`}>
+              <div className={`form-group col-span-3 ${errors.to ? "has-error" : ""}`}>
                 <label htmlFor="booking-to" className="form-label">
                   <MapPin size={16} className="field-icon destination" />
                   <span>TO (Destination) *</span>
@@ -166,10 +220,10 @@ export default function BookingForm({ id = "booking" }) {
               </div>
 
               {/* Travel Date */}
-              <div className={`form-group ${errors.date ? "has-error" : ""}`}>
+              <div className={`form-group col-span-2 ${errors.date ? "has-error" : ""}`}>
                 <label htmlFor="booking-date" className="form-label">
                   <Calendar size={16} className="field-icon" />
-                  <span>DATE (Travel Date) *</span>
+                  <span>DATE (Start Date) *</span>
                 </label>
                 <input
                   type="date"
@@ -187,8 +241,29 @@ export default function BookingForm({ id = "booking" }) {
                 )}
               </div>
 
+              {/* How Many Days / Duration */}
+              <div className="form-group col-span-2">
+                <label htmlFor="booking-duration" className="form-label">
+                  <CalendarDays size={16} className="field-icon" />
+                  <span>HOW MANY DAYS?</span>
+                </label>
+                <select
+                  id="booking-duration"
+                  name="duration"
+                  value={formData.duration}
+                  onChange={handleChange}
+                  className="form-input form-select"
+                >
+                  {durationOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               {/* Passenger Count */}
-              <div className="form-group">
+              <div className="form-group col-span-2">
                 <label htmlFor="booking-passengers" className="form-label">
                   <Users size={16} className="field-icon" />
                   <span>PASSENGERS</span>
@@ -209,7 +284,7 @@ export default function BookingForm({ id = "booking" }) {
               </div>
 
               {/* Customer Name */}
-              <div className={`form-group ${errors.name ? "has-error" : ""}`}>
+              <div className={`form-group col-span-3 ${errors.name ? "has-error" : ""}`}>
                 <label htmlFor="booking-name" className="form-label">
                   <User size={16} className="field-icon" />
                   <span>YOUR NAME *</span>
@@ -231,7 +306,7 @@ export default function BookingForm({ id = "booking" }) {
               </div>
 
               {/* Customer Phone */}
-              <div className={`form-group ${errors.phone ? "has-error" : ""}`}>
+              <div className={`form-group col-span-3 ${errors.phone ? "has-error" : ""}`}>
                 <label htmlFor="booking-phone" className="form-label">
                   <Phone size={16} className="field-icon" />
                   <span>PHONE NUMBER *</span>
@@ -250,6 +325,48 @@ export default function BookingForm({ id = "booking" }) {
                     <AlertCircle size={14} /> {errors.phone}
                   </span>
                 )}
+              </div>
+            </div>
+
+            {/* Dynamic Daily Route & Itinerary Plan */}
+            <div className="daily-itinerary-container">
+              <div className="daily-itinerary-header">
+                <div className="daily-itinerary-title-box">
+                  <Route size={18} className="field-icon" />
+                  <span className="daily-itinerary-title">
+                    DAILY ROUTE & ITINERARY PLAN ({daysCount} {daysCount === 1 ? "DAY" : "DAYS"})
+                  </span>
+                </div>
+                <span className="daily-itinerary-hint">
+                  Specify your travel route or planned stops for each day
+                </span>
+              </div>
+
+              <div className="daily-itinerary-list">
+                {Array.from({ length: daysCount }, (_, i) => i + 1).map((dayNum) => (
+                  <div key={dayNum} className="form-group daily-itinerary-item">
+                    <label htmlFor={`booking-day-${dayNum}`} className="form-label day-step-label">
+                      <span className="day-step-badge">DAY {dayNum}</span>
+                      <span>Route / Places to visit / Stops</span>
+                    </label>
+                    <input
+                      type="text"
+                      id={`booking-day-${dayNum}`}
+                      placeholder={
+                        dayNum === 1
+                          ? "e.g. Pickup at Colombo, visit Pinnawala, night stay at Kandy..."
+                          : dayNum === 2
+                          ? "e.g. Kandy Temple of the Tooth, Nuwara Eliya tea estates, Gregory Lake..."
+                          : dayNum === 3
+                          ? "e.g. Ella Nine Arches Bridge, Little Adam's Peak, return route..."
+                          : `e.g. Day ${dayNum} destination, activities, and planned stops...`
+                      }
+                      value={dailyPlans[dayNum] || ""}
+                      onChange={(e) => handleDailyPlanChange(dayNum, e.target.value)}
+                      className="form-input day-plan-input"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 

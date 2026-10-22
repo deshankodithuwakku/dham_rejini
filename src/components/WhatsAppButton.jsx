@@ -26,7 +26,7 @@ export default function WhatsAppButton() {
             <X size={12} />
           </button>
           <span className="bubble-title">Need a quick quote?</span>
-          <span className="bubble-text">Chat directly with Supun on WhatsApp!</span>
+          <span className="bubble-text">Chat directly on WhatsApp!</span>
         </div>
       )}
 

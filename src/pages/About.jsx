@@ -1,12 +1,65 @@
 import { assetUrl } from "../lib/assetUrl.js";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ShieldCheck, Compass, Heart, Award, ArrowRight, Phone, Milestone, Sparkles } from "lucide-react";
+import { ShieldCheck, Compass, Heart, Award, ArrowRight, Phone, Milestone, Sparkles, ZoomIn, X } from "lucide-react";
 import SectionHeading from "../components/SectionHeading";
 import OwnerSection from "../components/OwnerSection";
 import { businessInfo } from "../data/business";
 
+const historyMilestones = [
+  {
+    id: 1,
+    chapter: "CHAPTER 01 • THE GENESIS",
+    reg: "NC - 1931",
+    badge: "WORKSHOP YARD • ආරම්භක යුගය",
+    title: "The Birth of an Icon & Artisan Craft",
+    sinhalaTitle: "විචිත්‍රවත් නිමවුම සහ ආරම්භක යුගය",
+    desc: "Dham Rejini began with pure passion and uncompromising dedication. In the workshop yard, skilled artisans brought the bus to life through custom hand-cut vinyl, precision bodywork, and the distinctive pink styling that would soon make history across southern highways.",
+    highlight: "Authentic hand-finished bodywork and custom styling that laid the foundation for the Dham Rejini legacy.",
+    image: assetUrl("assets/images/history-01-genesis.jpg"),
+    alt: "Dham Rejini early body painting and craftsmanship in workshop yard"
+  },
+  {
+    id: 2,
+    chapter: "CHAPTER 02 • HIGHWAY SERVICE & CELEBRATIONS",
+    reg: "NC - 1931",
+    badge: "ROUTE 03 • වලස්මුල්ල - කොළඹ",
+    title: "Connecting People Across Route 03",
+    sinhalaTitle: "වලස්මුල්ල - කොළඹ සේවය සහ උත්සව මතකයන්",
+    desc: "Proudly serving commuters on Route 03 (Walasmulla - Colombo), Dham Rejini quickly earned admiration across the Southern Province for punctuality and vibrant character. Shown here decorated with festive balloons and garlands celebrating the Sinhala & Tamil New Year.",
+    highlight: "A beloved Southern highway icon renowned for festive welcomes, warm community ties, and reliable service.",
+    image: assetUrl("assets/images/history-02-route03.jpg"),
+    alt: "Dham Rejini NC-1931 Route 03 Walasmulla Colombo New Year celebrations"
+  },
+  {
+    id: 3,
+    chapter: "CHAPTER 03 • TRANSITION TO SPECIAL TOURS",
+    reg: "NC - 1931",
+    badge: "SPECIAL HIRE ERA • විශේෂ චාරිකා යුගය",
+    title: "Farewell to Route 03 & Entering Special Tours",
+    sinhalaTitle: "දෛනික ධාවනයට සමුදී Special Tours වෙත පිවිසීම",
+    desc: "Marking a landmark milestone in its storied journey, Dham Rejini bid farewell to standard daily highway route service to exclusively embrace luxury private charters and special celebrations. Upgraded under the S&S Group banner with signature custom styling and a full VVIP party setup.",
+    highlight: "Transforming from daily public transit into Sri Lanka's premier dedicated VVIP special hire coach.",
+    image: assetUrl("assets/images/history-03-special-tours.jpg"),
+    alt: "Dham Rejini NC-1931 Member of S&S Group VVIP Party Bus Special Hire"
+  },
+  {
+    id: 4,
+    chapter: "CHAPTER 04 • MODERN VVIP EVOLUTION",
+    reg: "SP NB - 4118",
+    badge: "MODERN ERA • නූතන සුඛෝපභෝගී යුගය",
+    title: "The Kylie Grand Luxury Limousine Edition",
+    sinhalaTitle: "නූතන VVIP සුඛෝපභෝගී සාද රථ විප්ලවය",
+    desc: "Today, Dham Rejini has evolved into Sri Lanka's benchmark VVIP luxury celebration coach (SP NB - 4118). Featuring high-fidelity club sound walls, luminous neon LED contour lighting, executive reclining lounge seats, and an elite private charter travel experience.",
+    highlight: "Sri Lanka's pinnacle celebration coach setting the gold standard in luxury group travel.",
+    image: assetUrl("assets/images/bus-real.jpg"),
+    alt: "Dham Rejini SP NB-4118 modern VVIP Luxury Party Bus"
+  }
+];
+
 export default function About() {
+  const [activePhoto, setActivePhoto] = useState(null);
+
   return (
     <div className="about-page">
       {/* Page Hero */}
@@ -75,71 +128,97 @@ export default function About() {
         </div>
       </section>
 
-      {/* History Timeline Section with Clean Placeholders */}
+      {/* History Timeline & Vintage Memories Section */}
       <section className="timeline-section section-spacing">
         <div className="container">
           <SectionHeading
-            badge="JOURNEY & MILESTONES"
-            title="OUR TIMELINE"
-            subtitle="The path of growth, vehicle acquisition, and service evolution. Milestones will be updated with verified historical records."
+            badge="HERITAGE & VINTAGE MEMORIES • පැරණි මතකයන්"
+            title="THE ROOTS OF DHAM REJINI"
+            subtitle="ගමන් මගේ නොමැකෙන පැරණි මතකයන් — Explore the inspiring journey of Dham Rejini, from hand-crafted beginnings and Route 03 memories to Sri Lanka's leading VVIP luxury party coach."
           />
 
           <div className="timeline-wrapper">
             <div className="timeline-line" />
 
-            {/* Timeline Item 1 */}
-            <div className="timeline-block">
-              <div className="timeline-badge-marker">
-                <Milestone size={18} />
-              </div>
-              <div className="premium-card timeline-card">
-                <div className="timeline-phase-tag">FOUNDATION</div>
-                <h3 className="timeline-title">The Inception of Dham Rejini</h3>
-                <p className="timeline-desc">
-                  Conceived with a clear mission to provide elevated private charter services across Sri Lanka, focusing on vehicle cleanliness, mechanical excellence, and client trust.
-                </p>
-                <div className="timeline-placeholder-notice">
-                  <span>[Verified launch date & inception details to be added by owner]</span>
+            {historyMilestones.map((item, index) => (
+              <div className="timeline-block" key={item.id}>
+                <div className="timeline-badge-marker">
+                  <span className="timeline-marker-num">0{index + 1}</span>
                 </div>
-              </div>
-            </div>
+                <div className="premium-card timeline-card">
+                  <div className="timeline-card-inner">
+                    <div
+                      className="timeline-image-container"
+                      onClick={() => setActivePhoto(item)}
+                      title="Click to view full photo"
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.alt}
+                        className="timeline-image"
+                        loading="lazy"
+                      />
+                      <span className="timeline-image-badge">{item.badge}</span>
+                      <div className="timeline-image-zoom-hint">
+                        <ZoomIn size={16} />
+                      </div>
+                    </div>
 
-            {/* Timeline Item 2 */}
-            <div className="timeline-block">
-              <div className="timeline-badge-marker">
-                <Milestone size={18} />
-              </div>
-              <div className="premium-card timeline-card">
-                <div className="timeline-phase-tag">FLEET EVOLUTION</div>
-                <h3 className="timeline-title">Kylie Grand Luxury Limousine Edition</h3>
-                <p className="timeline-desc">
-                  Commissioning of our iconic party bus coach (SP NB - 4118), equipped with high-fidelity sound, custom neon lighting, and executive lounge seating.
-                </p>
-                <div className="timeline-placeholder-notice">
-                  <span>[Verified coach commissioning milestone to be added by owner]</span>
+                    <div className="timeline-card-content">
+                      <div className="timeline-header-meta">
+                        <span className="timeline-phase-tag">{item.chapter}</span>
+                        <span className="timeline-bus-reg">{item.reg}</span>
+                      </div>
+                      <h3 className="timeline-title">{item.title}</h3>
+                      <h4 className="timeline-sinhala-title">{item.sinhalaTitle}</h4>
+                      <p className="timeline-desc">{item.desc}</p>
+                      <div className="timeline-highlight-box">
+                        <Sparkles size={16} />
+                        <span>{item.highlight}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Timeline Item 3 */}
-            <div className="timeline-block">
-              <div className="timeline-badge-marker">
-                <Milestone size={18} />
+      {/* Lightbox Modal for Vintage Memories */}
+      {activePhoto && (
+        <div className="history-modal-backdrop" onClick={() => setActivePhoto(null)}>
+          <div className="history-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="history-modal-close"
+              onClick={() => setActivePhoto(null)}
+              aria-label="Close modal"
+            >
+              <X size={22} />
+            </button>
+            <div className="history-modal-img-wrap">
+              <img
+                src={activePhoto.image}
+                alt={activePhoto.alt}
+                className="history-modal-img"
+              />
+            </div>
+            <div className="history-modal-details">
+              <div className="timeline-header-meta">
+                <span className="timeline-phase-tag">{activePhoto.chapter}</span>
+                <span className="timeline-bus-reg">{activePhoto.reg}</span>
               </div>
-              <div className="premium-card timeline-card">
-                <div className="timeline-phase-tag">ENTERPRISE EXPANSION</div>
-                <h3 className="timeline-title">Synergy with Alankara & Kochchi</h3>
-                <p className="timeline-desc">
-                  Broadening the founder’s service umbrella into specialized automotive care through Alankara Automotive and culinary hospitality with Kochchi Restaurant.
-                </p>
-                <div className="timeline-placeholder-notice">
-                  <span>[Verified business integration notes to be added by owner]</span>
-                </div>
+              <h3 className="history-modal-title">{activePhoto.title}</h3>
+              <h4 className="timeline-sinhala-title">{activePhoto.sinhalaTitle}</h4>
+              <p className="history-modal-desc">{activePhoto.desc}</p>
+              <div className="timeline-highlight-box">
+                <Sparkles size={16} />
+                <span>{activePhoto.highlight}</span>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      )}
 
       {/* The Dham Rejini Experience Section */}
       <section className="experience-deep-section section-spacing">

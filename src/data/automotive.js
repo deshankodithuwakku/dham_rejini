@@ -62,9 +62,9 @@ export const automotiveData = {
     }
   ],
   contact: {
-    inquiryPhone: "0767958695",
-    whatsappNumber: "94767958695",
-    whatsappUrl: "https://wa.me/94767958695?text=Hello%20Alankara%20Automotive%2C%20I%20would%20like%20to%20inquire%20about%20your%20automotive%20services.",
+    inquiryPhone: "+94 70 779 9999",
+    whatsappNumber: "94707799999",
+    whatsappUrl: "https://wa.me/94707799999?text=Hello%20Alankara%20Automotive%2C%20I%20would%20like%20to%20inquire%20about%20your%20automotive%20services.",
     locationPlaceholder: "Workshop Location: [To be added by owner]",
     hoursPlaceholder: "Working Hours: [To be confirmed by owner]",
   }
