@@ -4465,27 +4465,12 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
-@media (max-width: 768px) {
-  .collection-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .collection-card.card-featured,
-  .collection-card.card-side,
-  .collection-card.card-rear,
-  .collection-card.card-interior-seats,
-  .collection-card.card-interior-sound {
-    grid-column: span 1;
-    height: 320px;
-  }
-}
-
 /* ==========================================================================
-   MASTER RESPONSIVE SYSTEM (Mobile, Phablet, Tablet, Desktop)
-   Ensures 100% flawless layout, typography, touch targets & zero overflow
+   MASTER LUXURY RESPONSIVE SYSTEM (Mobile, Tablet, Desktop)
+   Transforms mobile into an ultra-clean, app-like, spacious luxury experience
    ========================================================================== */
 
-/* 1. Global Viewport & Overflow Safety */
+/* 1. Global Viewport Safety */
 html,
 body,
 #root {
@@ -4515,16 +4500,15 @@ body,
 /* 3. Tablet Devices (768px to 1024px) */
 @media (max-width: 1024px) {
   .container {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
   .section-spacing {
-    padding-top: 72px;
-    padding-bottom: 72px;
+    padding-top: 68px;
+    padding-bottom: 68px;
   }
 
-  /* Header floating capsule on tablets */
   .site-header {
     height: 72px;
   }
@@ -4533,7 +4517,6 @@ body,
     height: 64px;
   }
 
-  /* Hero on tablet */
   .hero-content-container {
     padding-top: calc(72px + 28px);
     padding-bottom: 60px;
@@ -4542,7 +4525,6 @@ body,
   .hero-layout-split {
     grid-template-columns: 1fr;
     gap: 36px;
-    text-align: left;
   }
 
   .hero-bus-card-showcase {
@@ -4550,7 +4532,18 @@ body,
     aspect-ratio: 16 / 10;
   }
 
-  /* Experience Section on Tablet */
+  .collection-card.card-featured,
+  .collection-card.card-side {
+    grid-column: span 6;
+    height: 360px;
+  }
+  .collection-card.card-rear,
+  .collection-card.card-interior-seats,
+  .collection-card.card-interior-sound {
+    grid-column: span 4;
+    height: 320px;
+  }
+
   .experience-box {
     grid-template-columns: 1fr;
   }
@@ -4564,12 +4557,10 @@ body,
     padding: 40px 32px;
   }
 
-  /* Timeline on Tablet */
   .timeline-card-inner {
     grid-template-columns: 280px 1fr;
   }
 
-  /* Owner Section on Tablet */
   .owner-grid {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -4582,9 +4573,13 @@ body,
   .owner-image-frame {
     max-width: 320px;
   }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* 4. Large Mobile & Small Tablet (600px to 768px) */
+/* 4. Mobile & Small Tablet (< 768px): The Ultimate Clean, Spacious Experience */
 @media (max-width: 768px) {
   /* Prevent iOS automatic zoom on text input focus */
   input,
@@ -4596,235 +4591,190 @@ body,
   }
 
   .container {
-    padding-left: 18px;
-    padding-right: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .section-spacing {
-    padding-top: 56px;
-    padding-bottom: 56px;
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 
   .section-header {
-    margin-bottom: 36px;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .section-badge {
+    font-size: 0.68rem;
+    padding: 5px 12px;
+    margin-bottom: 10px;
   }
 
   .section-title {
-    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    font-size: clamp(1.6rem, 5.8vw, 2.1rem);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
   }
 
   .section-subtitle {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    padding: 0 8px;
   }
 
-  /* Hero Section */
+  /* ---------------- HERO: Centered, Breathable, Cinematic ---------------- */
+  .hero-section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 60px;
+  }
+
+  .hero-content-container {
+    padding-top: 24px;
+    padding-bottom: 32px;
+    width: 100%;
+  }
+
+  .hero-text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    margin-bottom: 12px;
+    font-size: 0.66rem;
+    padding: 5px 12px;
+    letter-spacing: 0.12em;
+    background: rgba(8, 2, 12, 0.75);
+  }
+
+  .hero-logo-container {
+    margin-bottom: 10px;
+    justify-content: center;
+    display: flex;
+  }
+
+  .hero-logo-img {
+    height: 48px;
+    max-width: 135px;
+    object-fit: contain;
+  }
+
+  .hero-title {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
   .hero-brand {
-    font-size: clamp(2.2rem, 7.5vw, 3.4rem);
-    line-height: 1.05;
+    font-size: clamp(2.2rem, 7.8vw, 2.9rem);
+    letter-spacing: -0.01em;
+    line-height: 1.0;
   }
 
   .hero-subbrand {
-    font-size: clamp(0.95rem, 3.2vw, 1.35rem);
-    letter-spacing: 0.16em;
+    font-size: 0.82rem;
+    letter-spacing: 0.22em;
+    margin-top: 4px;
   }
 
   .hero-tagline {
-    font-size: clamp(1.15rem, 4vw, 1.45rem);
-  }
-
-  .hero-secondary-text {
     font-size: 0.98rem;
-    margin-bottom: 24px;
+    color: #f7e6f1;
+    margin-bottom: 8px;
+    max-width: 320px;
+    line-height: 1.4;
   }
 
+  /* Hide the 4-line repetitive paragraph on mobile so the bus video & actions shine */
+  .hero-secondary-text {
+    display: none;
+  }
+
+  /* Action Buttons: 2 sleek side-by-side pills */
   .hero-cta-group {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
     width: 100%;
-    gap: 12px;
-    margin-bottom: 32px;
+    max-width: 340px;
+    margin-top: 14px;
+    margin-bottom: 22px;
   }
 
   .hero-cta-group .btn-primary,
-  .hero-cta-group .btn-whatsapp {
-    width: 100%;
+  .hero-cta-group .btn-secondary {
+    padding: 11px 12px;
+    font-size: 0.82rem;
+    border-radius: 9999px;
     justify-content: center;
     text-align: center;
-    padding: 14px 20px;
+    min-height: 44px;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
   }
 
-  /* Booking Form */
-  .booking-card-wrapper {
-    padding: 30px 20px;
-    border-radius: var(--radius-lg);
-  }
-
-  .booking-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .col-span-3,
-  .col-span-2 {
-    grid-column: span 1;
-  }
-
-  .daily-itinerary-container {
-    padding: 18px 16px;
-  }
-
-  .daily-itinerary-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .booking-footer {
-    flex-direction: column-reverse;
-    gap: 16px;
-  }
-
-  .booking-submit-btn {
-    width: 100%;
+  /* Sleek Horizontal Meta Strip */
+  .hero-meta-strip {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    background: rgba(8, 2, 12, 0.78);
+    border: 1px solid rgba(225, 20, 133, 0.25);
+    border-radius: 9999px;
+    padding: 7px 18px;
+    backdrop-filter: blur(12px);
+    max-width: 100%;
   }
 
-  /* Timeline & Vintage Memories */
-  .timeline-card-inner {
-    grid-template-columns: 1fr;
+  .meta-divider {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--primary-purple);
   }
 
-  .timeline-image-container {
-    min-height: 220px;
-    max-height: 270px;
+  .meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  .timeline-card-content {
-    padding: 22px 18px;
+  .meta-label {
+    display: none; /* Hide verbose label on mobile */
   }
 
-  .timeline-block {
-    gap: 14px;
+  .meta-val {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.04em;
   }
 
-  .timeline-line {
-    left: 20px;
-  }
-
-  .timeline-badge-marker {
-    width: 42px;
-    height: 42px;
-  }
-
-  .timeline-marker-num {
-    font-size: 0.8rem;
-  }
-
-  /* Owner Card */
-  .owner-card-wrapper {
-    padding: 30px 20px;
-    border-radius: var(--radius-lg);
-  }
-
-  .owner-image-frame {
-    max-width: 280px;
-  }
-
-  .owner-wa-btn {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    font-size: 0.86rem;
-    padding: 12px 16px;
-  }
-
-  .enterprise-links {
-    width: 100%;
-  }
-
-  .enterprise-chip {
-    flex-grow: 1;
-    justify-content: center;
-  }
-
-  /* CTA Banner */
-  .cta-banner-card {
-    padding: 36px 20px;
-    border-radius: var(--radius-lg);
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
-  }
-
-  .cta-buttons .btn-whatsapp,
-  .cta-buttons .btn-primary,
-  .cta-buttons .btn-secondary {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-
-  /* Footer */
-  .site-footer {
-    padding-top: 52px;
-    padding-bottom: 30px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
-    margin-bottom: 40px;
-  }
-
-  .footer-bottom-bar {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-}
-
-/* 5. Mobile Small Phones (< 480px / 360px - 480px) */
-@media (max-width: 480px) {
-  .container {
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  /* Header & Logo */
-  .nav-container {
-    padding: 0 14px;
-  }
-
-  .brand-logo-img {
-    height: 38px;
-    max-width: 130px;
-  }
-
-  .mobile-toggle-btn {
-    padding: 6px;
-  }
-
-  /* Page Heros */
-  .page-hero {
-    padding-top: calc(72px + 24px);
-    padding-bottom: 36px;
-  }
-
-  .page-hero-title {
-    font-size: clamp(1.8rem, 7vw, 2.4rem);
-  }
-
-  .page-hero-subtitle {
-    font-size: 0.92rem;
-  }
-
-  /* Bus Photo Collection on small screens */
+  /* ---------------- PHOTO COLLECTION: App-like Swipeable Carousel ---------------- */
   .collection-grid {
-    gap: 12px;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding: 4px 4px 16px 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 -4px;
+  }
+
+  .collection-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .collection-card.card-featured,
@@ -4832,27 +4782,244 @@ body,
   .collection-card.card-rear,
   .collection-card.card-interior-seats,
   .collection-card.card-interior-sound {
-    height: 250px;
-    border-radius: var(--radius-md);
+    flex: 0 0 84%;
+    max-width: 320px;
+    height: 360px;
+    scroll-snap-align: center;
+    border-radius: 18px;
+    grid-column: auto !important;
   }
 
   .collection-card-inner {
-    padding: 14px;
+    padding: 16px;
   }
 
   .collection-title {
-    font-size: 0.96rem;
+    font-size: 1.05rem;
   }
 
-  .collection-badge {
-    font-size: 0.64rem;
-    padding: 3px 8px;
+  .collection-sub {
+    font-size: 0.78rem;
   }
 
-  /* Experience section */
+  /* Hide long card description on mobile cards to keep photos clear & visible */
+  .collection-desc {
+    display: none;
+  }
+
+  /* ---------------- SERVICES: Swipeable Carousel on Mobile ---------------- */
+  .services-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding: 4px 4px 16px 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 -4px;
+  }
+
+  .services-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-card {
+    flex: 0 0 84%;
+    max-width: 320px;
+    scroll-snap-align: center;
+    border-radius: 18px;
+  }
+
+  .service-card-body {
+    padding: 22px 18px 16px;
+  }
+
+  .services-view-more {
+    margin-top: 20px;
+  }
+
+  .services-view-more .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    border-radius: 9999px;
+  }
+
+  /* ---------------- INTRO SECTION: Compact & Clean ---------------- */
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .intro-title {
+    font-size: 1.45rem;
+    margin-bottom: 12px;
+  }
+
+  .intro-paragraph {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .intro-stats-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(14, 6, 18, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 14px;
+    align-items: center;
+  }
+
+  .stat-icon-wrapper {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .stat-heading {
+    font-size: 0.92rem;
+    margin-bottom: 2px;
+  }
+
+  .stat-desc {
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  .intro-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .intro-cta-row .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    border-radius: 9999px;
+  }
+
+  .intro-owner-stamp {
+    justify-content: center;
+    font-size: 0.82rem;
+  }
+
+  /* ---------------- BOOKING FORM: Clean & Streamlined ---------------- */
+  .booking-card-wrapper {
+    padding: 24px 16px;
+    border-radius: 18px;
+    background: rgba(14, 6, 18, 0.92);
+    border: 1px solid rgba(225, 20, 133, 0.22);
+  }
+
+  .booking-header {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .booking-badge {
+    font-size: 0.68rem;
+    padding: 4px 12px;
+    margin-bottom: 8px;
+  }
+
+  .booking-title {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+
+  .booking-subtitle {
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .booking-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .col-span-3,
+  .col-span-2 {
+    grid-column: span 1;
+  }
+
+  .form-label {
+    font-size: 0.72rem;
+    margin-bottom: 4px;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: rgba(6, 2, 8, 0.85);
+  }
+
+  .daily-itinerary-container {
+    padding: 14px 12px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    background: rgba(225, 20, 133, 0.04);
+    border: 1px solid rgba(225, 20, 133, 0.2);
+  }
+
+  .daily-itinerary-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+  }
+
+  .daily-itinerary-title {
+    font-size: 0.8rem;
+  }
+
+  .daily-itinerary-hint {
+    font-size: 0.72rem;
+  }
+
+  .day-step-badge {
+    font-size: 0.68rem;
+    padding: 2px 10px;
+  }
+
+  .booking-footer {
+    flex-direction: column-reverse;
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .booking-submit-btn {
+    width: 100%;
+    justify-content: center;
+    border-radius: 9999px;
+    padding: 14px 20px;
+    font-size: 0.92rem;
+  }
+
+  .booking-guarantee {
+    text-align: center;
+    font-size: 0.78rem;
+  }
+
+  /* ---------------- VIP CABIN EXPERIENCE SECTION ---------------- */
+  .experience-box {
+    grid-template-columns: 1fr;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
   .experience-image-side {
-    min-height: 210px;
-    height: 230px;
+    height: 220px;
+    min-height: 220px;
   }
 
   .experience-overlay-badge {
@@ -4863,20 +5030,176 @@ body,
   }
 
   .experience-text-side {
-    padding: 24px 16px;
+    padding: 22px 16px;
   }
 
   .experience-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
   }
 
   .experience-desc {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 16px;
   }
 
-  /* Timeline section */
+  .experience-points {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .exp-point {
+    gap: 10px;
+  }
+
+  .exp-point strong {
+    font-size: 0.88rem;
+  }
+
+  .exp-point p {
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  .experience-footer .btn-primary {
+    width: 100%;
+    border-radius: 9999px;
+    justify-content: center;
+  }
+
+  /* ---------------- OWNER SECTION: Compact Profile ---------------- */
+  .owner-card-wrapper {
+    padding: 24px 16px;
+    border-radius: 18px;
+  }
+
+  .owner-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .owner-visual-col {
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+
+  .owner-image-frame {
+    max-width: 190px;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+  }
+
+  .owner-floating-tag {
+    display: none; /* Hide heavy tag over image on mobile */
+  }
+
+  .owner-content-col {
+    text-align: center;
+  }
+
+  .owner-badge {
+    margin: 0 auto 8px auto;
+  }
+
+  .owner-name {
+    font-size: 1.6rem;
+    margin-bottom: 2px;
+  }
+
+  .owner-role {
+    font-size: 0.84rem;
+    margin-bottom: 14px;
+  }
+
+  .owner-quote {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    padding-left: 12px;
+    text-align: left;
+    margin-bottom: 16px;
+  }
+
+  .owner-highlights {
+    gap: 8px;
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  .owner-point {
+    font-size: 0.82rem;
+  }
+
+  .owner-wa-btn {
+    width: 100%;
+    border-radius: 9999px;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.82rem;
+    padding: 12px 14px;
+  }
+
+  .owner-enterprises {
+    padding-top: 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .enterprise-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .enterprise-chip {
+    font-size: 0.72rem;
+    padding: 8px 10px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* ---------------- GALLERY PREVIEW ON MOBILE: 2-Column Grid ---------------- */
+  .gallery-preview-footer .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    border-radius: 9999px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .gallery-image-container {
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+  }
+
+  .gallery-hover-overlay {
+    opacity: 1;
+    background: linear-gradient(180deg, transparent 40%, rgba(5, 1, 6, 0.9) 100%);
+    padding: 10px;
+  }
+
+  .gallery-card-badge {
+    font-size: 0.58rem;
+    padding: 2px 6px;
+  }
+
+  .gallery-card-title {
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+
+  .gallery-card-sub {
+    display: none;
+  }
+
+  /* ---------------- TIMELINE & MEMORIES (About Page) ---------------- */
   .timeline-wrapper {
-    gap: 28px;
+    gap: 20px;
   }
 
   .timeline-block {
@@ -4885,6 +5208,8 @@ body,
 
   .timeline-line {
     left: 15px;
+    top: 20px;
+    bottom: 20px;
   }
 
   .timeline-badge-marker {
@@ -4897,7 +5222,16 @@ body,
   }
 
   .timeline-card {
-    border-radius: 14px;
+    border-radius: 16px;
+  }
+
+  .timeline-card-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-image-container {
+    height: 200px;
+    min-height: 200px;
   }
 
   .timeline-card-content {
@@ -4906,16 +5240,17 @@ body,
 
   .timeline-title {
     font-size: 1.15rem;
+    margin-bottom: 2px;
   }
 
   .timeline-sinhala-title {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     margin-bottom: 8px;
   }
 
   .timeline-desc {
-    font-size: 0.86rem;
-    line-height: 1.55;
+    font-size: 0.84rem;
+    line-height: 1.5;
     margin-bottom: 12px;
   }
 
@@ -4924,46 +5259,82 @@ body,
     font-size: 0.78rem;
   }
 
-  /* History Lightbox Modal */
-  .history-modal-backdrop {
-    padding: 12px;
+  /* ---------------- CTA BANNER SECTION ---------------- */
+  .cta-banner-card {
+    padding: 32px 18px;
+    border-radius: 18px;
   }
 
-  .history-modal-content {
-    border-radius: 16px;
-    max-height: 94vh;
+  .cta-badge {
+    font-size: 0.68rem;
+    padding: 4px 12px;
+    margin-bottom: 12px;
   }
 
-  .history-modal-img-wrap {
-    max-height: 240px;
+  .cta-heading {
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+    margin-bottom: 10px;
   }
 
-  .history-modal-details {
-    padding: 16px 14px 18px;
+  .cta-sub {
+    font-size: 0.88rem;
+    margin-bottom: 22px;
   }
 
-  .history-modal-title {
-    font-size: 1.2rem;
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
   }
 
-  .history-modal-desc {
-    font-size: 0.86rem;
+  .cta-buttons .btn-whatsapp,
+  .cta-buttons .btn-primary,
+  .cta-buttons .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    border-radius: 9999px;
   }
 
-  /* Floating WhatsApp Button */
-  .floating-wa-wrapper {
-    bottom: 14px;
-    right: 14px;
+  /* ---------------- SITE FOOTER ---------------- */
+  .site-footer {
+    padding-top: 40px;
+    padding-bottom: 24px;
   }
 
-  .floating-wa-btn {
-    padding: 10px 16px;
-    font-size: 0.86rem;
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 28px;
   }
 
-  .floating-wa-bubble {
-    max-width: 200px;
-    padding: 10px 24px 10px 12px;
+  .footer-logo-img {
+    height: 38px;
+  }
+
+  .footer-statement {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .footer-owner-indicator {
+    font-size: 0.78rem;
+    padding: 6px 12px;
+  }
+
+  .footer-wa-card {
+    padding: 10px 14px;
+    margin-bottom: 16px;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+    padding-top: 18px;
+    font-size: 0.74rem;
   }
 }
+
 
